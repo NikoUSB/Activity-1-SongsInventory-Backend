@@ -15,7 +15,7 @@ import lombok.Setter;
 
 @Getter
 @Entity
-@Table(name = "pc_games_entity")
+@Table(name = "songs_entity")
 @AllArgsConstructor
 @NoArgsConstructor
 public class SongEntity {
