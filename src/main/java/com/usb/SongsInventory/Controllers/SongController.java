@@ -28,7 +28,7 @@ public class SongController {
     public ResponseEntity<?> getAllCarsMovies(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "5") int size,
-            @RequestParam(defaultValue = "name,desc") String[] sort){
+            @RequestParam(defaultValue = "songName,desc") String[] sort){
         try {
             Pageable pageable = PageRequest.of(page, size, Sort.by(parseSort(sort)));
             return songService.getAllSongs(pageable);

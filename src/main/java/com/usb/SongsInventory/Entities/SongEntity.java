@@ -26,41 +26,41 @@ public class SongEntity {
     private String id;
 
     @Setter
-    @Column(name = "name", nullable = false, length = 255)
-    @JsonProperty("name")
+    @Column(name = "song_name", nullable = false, length = 255)
+    @JsonProperty("songName")
     @NotBlank(message = "Song name is required")
     @Size(min = 3, max = 100, message = "Song Name must be between 3 and 100 characters")
-    private String name;
+    private String songName;
 
     @Setter
-    @Column(name = "artist", nullable = false, length = 255)
-    @JsonProperty("artist")
+    @Column(name = "song_artist", nullable = false, length = 255)
+    @JsonProperty("songArtist")
     @NotBlank(message = "Artist name is required")
     @Size(min = 3, max = 100, message = "Artist Name must be between 3 and 100 characters")
-    private String artist;
+    private String songArtist;
 
     @Setter
-    @Column(name = "album", nullable = false, length = 255)
-    @JsonProperty("album")
+    @Column(name = "song_album", nullable = false, length = 255)
+    @JsonProperty("songAlbum")
     @NotBlank(message = "Album name is required")
     @Size(min = 3, max = 100, message = "Album Name must be between 3 and 100 characters")
-    private String album;
+    private String songAlbum;
 
     @Setter
-    @Column(name = "year", nullable = false, length = 4)
-    @JsonProperty("year")
+    @Column(name = "song_year", nullable = false, length = 4)
+    @JsonProperty("songYear")
     @NotBlank(message = "Year is required")
     @Pattern(regexp = "^(15|20)\\d{2}$", message = "Year must be a valid 4-digit number (1500-2099)")
-    private String year;
+    private String songYear;
 
     @Override
     public String toString() {
         return "PcGamesEntity{" +
                 "id='" + id + '\'' +
-                ", gameName='" + name + '\'' +
-                ", gameYear='" + artist + '\'' +
-                ", gameScore=" + album +
-                ", gamePublisher='" + year + '\'' +
+                ", gameName='" + songName + '\'' +
+                ", gameYear='" + songArtist + '\'' +
+                ", gameScore=" + songAlbum +
+                ", gamePublisher='" + songYear + '\'' +
                 '}';
     }
 }

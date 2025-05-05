@@ -53,7 +53,7 @@ public class SongService {
 
     public ResponseEntity<?> addSong(SongEntity songToAdd) {
         Page<SongEntity> song = songRepository.findAllBySongNameContaining(
-                songToAdd.getName(),
+                songToAdd.getSongName(),
                 Pageable.unpaged());
         if (song.getTotalElements() > 0) {
             return new ResponseEntity<>(Collections.singletonMap("Status", String.format("Song already exists with %d coincidences.", song.getTotalElements())), HttpStatus.CONFLICT);
@@ -70,10 +70,10 @@ public class SongService {
         }
         SongEntity existingSong = song.get();
 
-        existingSong.setName(songToUpdate.getName());
-        existingSong.setArtist(songToUpdate.getArtist());
-        existingSong.setAlbum(songToUpdate.getAlbum());
-        existingSong.setYear(songToUpdate.getYear());
+        existingSong.setSongName(songToUpdate.getSongName());
+        existingSong.setSongArtist(songToUpdate.getSongArtist());
+        existingSong.setSongAlbum(songToUpdate.getSongAlbum());
+        existingSong.setSongYear(songToUpdate.getSongYear());
         songRepository.save(existingSong);
 
         return ResponseEntity.ok(Collections.singletonMap("Status", String.format("Updated Song with ID %s", existingSong.getId())));
