@@ -10,10 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @AllArgsConstructor
@@ -26,7 +23,7 @@ public class SongService {
         return ResponseEntity.ok(songs);
     }
 
-    public ResponseEntity<?> getSongById(String id) {
+    public ResponseEntity<?> getSongById(UUID id) {
         SongEntity song = songRepository.findById(id).orElse(null);
         if (song == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -63,7 +60,7 @@ public class SongService {
         }
     }
 
-    public ResponseEntity<?> updateSong(String id, SongEntity songToUpdate) {
+    public ResponseEntity<?> updateSong(UUID id, SongEntity songToUpdate) {
         Optional<SongEntity> song = songRepository.findById(id);
         if (song.isEmpty()) {
             return new ResponseEntity<>(Collections.singletonMap("Status", String.format("Song with ID %s not found.", id)), HttpStatus.NOT_FOUND);
@@ -79,7 +76,7 @@ public class SongService {
         return ResponseEntity.ok(Collections.singletonMap("Status", String.format("Updated Song with ID %s", existingSong.getId())));
     }
 
-    public ResponseEntity<?> deleteSong(String id) {
+    public ResponseEntity<?> deleteSong(UUID id) {
         Optional<SongEntity> song = songRepository.findById(id);
         if (song.isEmpty()) {
             return new ResponseEntity<>(Collections.singletonMap("Status", String.format("Song with ID %s doesn't exist.", id)),HttpStatus.NOT_FOUND);

@@ -12,6 +12,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/songs")
@@ -24,7 +25,7 @@ public class SongController {
         this.songService = songService;
     }
 
-    @GetMapping
+    @GetMapping({"","/"})
     public ResponseEntity<?> getAllCarsMovies(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "5") int size,
@@ -55,7 +56,7 @@ public class SongController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getCarsMovieById(@PathVariable String id){
+    public ResponseEntity<?> getCarsMovieById(@PathVariable UUID id){
         return songService.getSongById(id);
     }
 
@@ -76,12 +77,12 @@ public class SongController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateCarsMovie(@PathVariable String id, @Valid @RequestBody SongEntity songEntity){
+    public ResponseEntity<?> updateCarsMovie(@PathVariable UUID id, @Valid @RequestBody SongEntity songEntity){
         return songService.updateSong(id,songEntity);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteCarsMovie(@PathVariable String id){
+    public ResponseEntity<?> deleteCarsMovie(@PathVariable UUID id){
         return songService.deleteSong(id);
     }
 

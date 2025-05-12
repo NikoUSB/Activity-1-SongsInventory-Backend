@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import java.util.UUID;
 
 @Getter
 @Entity
@@ -23,7 +24,7 @@ public class SongEntity {
     @Id
     @Column(name = "id", nullable = false, length = 36)
     @JsonProperty("id")
-    private String id;
+    private UUID id;
 
     @Setter
     @Column(name = "song_name", nullable = false, length = 255)
