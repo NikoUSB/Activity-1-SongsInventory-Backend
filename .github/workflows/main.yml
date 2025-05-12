@@ -44,7 +44,7 @@ jobs:
       - name: Upload JAR file
         uses: actions/upload-artifact@v4
         with:
-          name: spring-boot-animesinventory
+          name: spring-boot-songsinventory
           path: target/*.jar
 
 
