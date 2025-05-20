@@ -1,5 +1,7 @@
+--CREATE TABLE IF NOT EXISTS songs_entity (
+DROP TABLE songs_entity;
 CREATE TABLE IF NOT EXISTS songs_entity (
-    id BINARY(16) NOT NULL,
+    id CHAR(36) NOT NULL,
     song_name VARCHAR(255) NOT NULL,
     song_artist VARCHAR(255) NOT NULL,
     song_album VARCHAR(255) NOT NULL,

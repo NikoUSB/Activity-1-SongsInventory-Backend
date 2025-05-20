@@ -1,10 +1,7 @@
 package com.usb.SongsInventory.Entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -12,7 +9,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.util.UUID;
 
 @Getter
 @Entity
@@ -24,7 +20,7 @@ public class SongEntity {
     @Id
     @Column(name = "id", nullable = false, length = 36)
     @JsonProperty("id")
-    private UUID id;
+    private String id;
 
     @Setter
     @Column(name = "song_name", nullable = false, length = 255)
