@@ -10,6 +10,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @Getter
 @Entity
 @Table(name = "songs_entity")
@@ -50,9 +52,16 @@ public class SongEntity {
     @Pattern(regexp = "^(15|20)\\d{2}$", message = "Year must be a valid 4-digit number (1500-2099)")
     private String songYear;
 
+    @PrePersist
+    public void generateUUID() {
+        if (id == null) {
+            id = UUID.randomUUID().toString();  // Cambié de UUID a String
+        }
+    }
+
     @Override
     public String toString() {
-        return "PcGamesEntity{" +
+        return "SongEntity{" +
                 "id='" + id + '\'' +
                 ", gameName='" + songName + '\'' +
                 ", gameYear='" + songArtist + '\'' +

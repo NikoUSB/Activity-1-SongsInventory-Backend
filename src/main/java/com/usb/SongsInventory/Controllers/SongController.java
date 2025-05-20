@@ -60,7 +60,7 @@ public class SongController {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<?> getMoviesByName(
+    public ResponseEntity<?> getSongByName(
             @RequestParam String name,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "5") int size,
@@ -71,17 +71,17 @@ public class SongController {
     }
 
     @PostMapping
-    public ResponseEntity<?> insertCarsMovie(@Valid @RequestBody SongEntity songEntity){
+    public ResponseEntity<?> insertSong(@Valid @RequestBody SongEntity songEntity){
         return songService.addSong(songEntity);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateCarsMovie(@PathVariable String id, @Valid @RequestBody SongEntity songEntity){
+    public ResponseEntity<?> updateSong(@PathVariable String id, @Valid @RequestBody SongEntity songEntity){
         return songService.updateSong(id,songEntity);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteCarsMovie(@PathVariable String id){
+    public ResponseEntity<?> deleteSong(@PathVariable String id){
         return songService.deleteSong(id);
     }
 

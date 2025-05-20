@@ -102,5 +102,7 @@ VALUES
 
 
 ON DUPLICATE KEY UPDATE
+    song_name = VALUES(song_name),
+    song_artist = VALUES(song_artist),
     song_album = VALUES(song_album),
     song_year = VALUES(song_year);
